@@ -4,25 +4,22 @@ from flask_mail import Mail, Message
 app = Flask(__name__)
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = 'johndoe@gmail.com'
-app.config['MAIL_PASSWORD'] = 'your-password'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] ='roselyne.mwaniki@student.moringaschool.com'
+app.config['MAIL_PASSWORD'] = 'iibv tdcd pmlk vqhm'
+app.config['MAIL_DEFAULT_SENDER'] = 'roselyne.mwaniki@student.moringaschool.com'
 
 mail = Mail(app)
 
-@app.route('/')
+
+@app.route("/")
 def send_email():
-    msg = Message('Hello', sender='johndoe@gmail.com', recipients=['roselynemwaniki@gmail.com'])
-    msg.body = 'This is a test email'
+    msg = Message(subject='Hello from the other side!', recipients=['christineroselyne636@gmail.com'])
+    msg.body = "Hey Paul, sending you this email from my Flask app, lmk if it works."
     mail.send(msg)
-    return 'Email sent'
+    return "Message sent!"
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
-    
-
-
+    app.run(debug=True)    
